@@ -32,7 +32,7 @@ int main(){
     cout << "첫번째 숫자의 편차: "<<setw(9)<<dev1<<endl;
     cout << "두번째 숫자의 편차: "<<setw(9)<<dev2<<endl;
     cout << "세번째 숫자의 편차: "<<setw(9)<<dev3<<endl;
-    cout <<"끝! "<<endl;
+    cout <<"끝!!! "<<endl;
     
     return 0;
 
