@@ -6,34 +6,51 @@ using namespace std; // std::cout 에서 std::생략하려면 쓰는 것
 
 
 int main(){
-    int num1,num2;
-    int larger;
+    // 변수 선언
+    unsigned int givenInt,firstDigit,day;
+    //입력받기
+    cout <<"양의 정수 입력: ";
+    cin >>givenInt;
+    //처리
+    firstDigit=givenInt %10 ;
+    //출력
+    cout << "입력한 정수: "<<givenInt << endl;
+    cout << "첫번째 자리수 추출 : "<< firstDigit << endl;
+    day();
+    return 0;
+}
+/*
+*입력된 정의 모든 자릿수를 추출해서 출력하는 프로그램 확장하기
+*ex) input :2345
+* 출력 :
+*   첫번째 자리수 추출:5
+*   두번째 자리수 추출:4
+*   세번째 자리수 추출:3
+*   네번째 자리수 추출:2
+*
+*
+*
+*
+*/
 
-    cout << "Enter the first number: ";
-    cin >> num1;
-    cout << "Enter the second number: ";
-    cin >> num2;
-    larger = num1>=num2 ? num1:num2;
-    cout << "더 큰 숫자= " << larger << endl ;
+int day(){
+    // 변수 선언
+    unsigned int givenInt,firstDigit,secondDigit,thirdDigit,forthDigit;
+    //입력받기
+    cout <<"양의 정수 입력: ";
+    cin >>givenInt;
+    //처리
+    firstDigit=givenInt %10 ;
+    secondDigit=givenInt %100 ;
+    thirdDigit=givenInt %1000 ;
+    forthDigit=givenInt %10000 ;
 
-
-
-   // 변수 선언
-   double number ;
-   int intpart ;
-   double frackPart ;
-   // 입력받기
-   cout << "부동 소수점 입력 : ";
-   cin >> number ;
-   //처리
-    //intpart = static_cast<int>(number);
-    intpart = number;
-    frackPart=number-intpart;
-    cout << fixed << showpoint << setprecision(2);
-    cout << "원래 값: " << number << endl ;
-    cout << "정수부분: "<< intpart << endl ;
-    cout << "소수점 아래 부분: " << frackPart << endl;
-    cout << "max value of int type: "<< numeric_limits<int>::max()<<endl;
+    //출력
+    cout << "입력한 정수: "<<givenInt << endl;
+    cout << "첫번째 자리수 추출 : "<< firstDigit << endl;
+    cout << "두번째 자리수 추출 : "<< secondDigit << endl;
+    cout << "세번째 자리수 추출 : "<< thirdDigit << endl;
+    cout << "네번째 자리수 추출 : "<< forthDigit << endl;
 
     return 0;
 }
