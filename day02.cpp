@@ -6,51 +6,22 @@ using namespace std; // std::cout 에서 std::생략하려면 쓰는 것
 
 
 int main(){
-    // 변수 선언
-    unsigned int givenInt,firstDigit,day;
+    //변수선언
+    unsigned long duration,hours,minutes,seconds;
     //입력받기
-    cout <<"양의 정수 입력: ";
-    cin >>givenInt;
+    cout << "초 단위 시간을 양의 정수로 입력: ";
+    cin >> duration ;
     //처리
-    firstDigit=givenInt %10 ;
+    hours =duration/3600L;
+    minutes=(duration-(hours*3600L))/60L;
+    seconds=duration-(hours*3600L)-(minutes*60);
     //출력
-    cout << "입력한 정수: "<<givenInt << endl;
-    cout << "첫번째 자리수 추출 : "<< firstDigit << endl;
-    day();
+    cout << "입력된 초 단위 시간: "<<duration<<endl;
+    cout << "결과: ";
+    cout << hours << "시";
+    cout << minutes << "분";
+    cout << seconds << "초";
     return 0;
-}
-/*
-*입력된 정의 모든 자릿수를 추출해서 출력하는 프로그램 확장하기
-*ex) input :2345
-* 출력 :
-*   첫번째 자리수 추출:5
-*   두번째 자리수 추출:4
-*   세번째 자리수 추출:3
-*   네번째 자리수 추출:2
-*
-*
-*
-*
-*/
 
-int day(){
-    // 변수 선언
-    unsigned int givenInt,firstDigit,secondDigit,thirdDigit,forthDigit;
-    //입력받기
-    cout <<"양의 정수 입력: ";
-    cin >>givenInt;
-    //처리
-    firstDigit=givenInt %10 ;
-    secondDigit=givenInt %100 ;
-    thirdDigit=givenInt %1000 ;
-    forthDigit=givenInt %10000 ;
 
-    //출력
-    cout << "입력한 정수: "<<givenInt << endl;
-    cout << "첫번째 자리수 추출 : "<< firstDigit << endl;
-    cout << "두번째 자리수 추출 : "<< secondDigit << endl;
-    cout << "세번째 자리수 추출 : "<< thirdDigit << endl;
-    cout << "네번째 자리수 추출 : "<< forthDigit << endl;
-
-    return 0;
 }
