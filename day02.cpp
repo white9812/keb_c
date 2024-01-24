@@ -33,6 +33,7 @@ int main(){
     cout << "두번째 숫자의 편차: "<<setw(9)<<dev2<<endl;
     cout << "세번째 숫자의 편차: "<<setw(9)<<dev3<<endl;
     
+    
     return 0;
 
 
