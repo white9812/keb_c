@@ -7,20 +7,32 @@ using namespace std; // std::cout 에서 std::생략하려면 쓰는 것
 
 int main(){
     //변수선언
-    unsigned long duration,hours,minutes,seconds;
+    int num1,num2,num3;
+    int sum;
+    double average;
+    double dev1,dev2,dev3;
     //입력받기
-    cout << "초 단위 시간을 양의 정수로 입력: ";
-    cin >> duration ;
+    cout << "첫번째 숫자 입력: ";
+    cin >> num1 ;
+    cout << "두번째 숫자 입력: ";
+    cin >> num2 ;
+    cout << "세번째 숫자 입력: ";
+    cin >> num3 ;
     //처리
-    hours =duration/3600L;
-    minutes=(duration-(hours*3600L))/60L;
-    seconds=duration-(hours*3600L)-(minutes*60);
+    sum=num1+num2+num3;
+    average=static_cast<double>(sum)/3;
+    dev1=num1-average;
+    dev2=num2-average;
+    dev3=num3-average;
+
     //출력
-    cout << "입력된 초 단위 시간: "<<duration<<endl;
-    cout << "결과: ";
-    cout << hours << "시";
-    cout << minutes << "분";
-    cout << seconds << "초";
+    cout << fixed << setprecision(2);
+    cout << "세 숫자의 합"<<sum<<endl;
+    cout << "평균 : "<<setw(9)<<average<<endl;
+    cout << "첫번째 숫자의 편차: "<<setw(9)<<dev1<<endl;
+    cout << "두번째 숫자의 편차: "<<setw(9)<<dev2<<endl;
+    cout << "세번째 숫자의 편차: "<<setw(9)<<dev3<<endl;
+    
     return 0;
 
 
