@@ -25,6 +25,7 @@ int main(){
                  break;
         // break가 없으면 입력한 숫자부터 그 다음수들까지 모두 출력됨
         //case1부터 맞는 case인지 판단하고 맞는게 있으면 그다음 case도 처리하는것
-   
+        default : cout<<"There is no days" <<endl;
     }
+    return 0;
 }
