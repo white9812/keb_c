@@ -1,43 +1,85 @@
 #include <iostream>
-#include <fstream>
+
 #include <iomanip>
 using namespace std;
 
-int main(){
-    //선언과 초기화
-    const int CAPACITY= 10;
-    int frequencies[CAPACITY]={0};
-    ifstream integerFile;
-    //정수 파일 열기
-    integerFile.open("integerFile.dat");
-    if(!integerFile){
-        cout <<"숫자 파일을 열 수 없습니다."<<endl;
-        cout << "프로그램을 중단합니다.";
-        return 0;
-    }
-    // 파일에서 정수를 읽어 들이고, 빈도 배열 생성
-    int data;
-    int size=0;
-    while(integerFile >> data){
-        if(data>=0 && data<=9){
-            size++;
-            frequencies[data]++;
+/* rowTransform 함수는 2차원 배열을 
+* 행 방향으로 선형 변환해서 1차원 배열로 생성
+* 첫 번째 매개변수는 변경하지 않게 const 한정자를 붙임 */
+void rowTransform(const int originArray[][4],
+                  int rowSize,int rowArray[])
+{
+    int i =0;
+    int j=0;
+    for (int k=0;k<8;k++){
+        rowArray[k]=originArray[i][j];
+        j++;
+        if(j>3){
+            i++;
+            j=0;
 
         }
     }
-    // 정수 파일 닫기
-    integerFile.close();
-    // 빈도 배열과 히스토그램 출력
-    //cout << "파일 안에 " <<size <<"개의 유효한 데이터가 있습니다."<<endl;
-    cout << "파일 안에 " <<size <<"개의 유효한 데이터가 있습니다."<<endl;
-    for(int i=0;i<10;i++){
-        cout <<setw(3)<<i<<" ";
-        for(int f=1;f<=frequencies[i];f++){
-            cout<< "*";
-
-        }
-        cout<<" "<<frequencies[i]<<endl;
-    }
-    return 0;
 
 }
+/*colTransform 함수는 2차원 배열을
+열 방향으로 선형 변환해서 1차원 배열로 생성
+첫 번째 매개변수는 변경하지 않게 const 한정자를 붙임*/
+void colTransform(const int originArray[][4],
+                int rowSize,int colArray[])
+{
+    int i =0;
+    int j=0;
+    for (int k=0;k<8;k++){
+        colArray[k]=originArray[i][j];
+        i++;
+        if(i>1){
+            j++;
+            i=0;
+        }
+    }
+}
+/*2차원 배열을 매개변수로 받아서 출력
+매개변수는 변경하지 않게 const 한정자를 붙임*/
+void printTwoDimensional(const int twoDImensional[][4],
+                        int rowSize){
+                            for(int i=0;i<rowSize;i++){
+                                for(int j=0;j<4;j++){
+                                    cout<<setw(4)<<twoDImensional[i][j];
+                                }
+                                cout <<endl;
+                            }
+                            cout <<endl;
+                        }
+/*1차원 배열을 매개변수로 받아서 출력
+매개변수는 변경하지 않게 const 한정자를 붙임*/
+void printOneDimensional(const int oneDimesional[],int size)
+{
+    for(int i=0;i<size;i++)
+    {
+        cout<<setw(4)<<oneDimesional[i];
+
+    }
+    cout<<endl;
+}
+int main()
+{
+    //배열을 선언하고 초기화
+    int originArray[2][4]={{0,1,2,3},{10,11,12,13}};
+    int rowArray[8];
+    int colArray[8];
+    //2개의 함수를 호출하여 배열 변환
+    rowTransform(originArray,2,rowArray);
+    colTransform(originArray,2,colArray);
+    //2차원 배열 출력
+    cout <<"   원본 배열   "<<endl;
+    printTwoDimensional(originArray,2);
+    //행 방향으로 선형 변환하고 결과 출력
+    cout <<"행 방향으로 선형 변환한 결과 : ";
+    printOneDimensional(rowArray,8);
+    //열 방향으로 선형 변환하고 결과 출력
+    cout <<"열 방향으로 선형 변환한 결과 : ";
+    printOneDimensional(colArray,8);
+    return 0;
+}
+
